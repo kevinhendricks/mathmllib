@@ -17,8 +17,8 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <config.h>
-
-#include <glib.h>
+#include <iostream>
+#include <fstream>
 
 #include "Utils.hh"
 
@@ -26,7 +26,9 @@ namespace MathViewNS {
 
 bool
 fileExists(const char* fileName)
-{ return g_file_test(fileName, G_FILE_TEST_EXISTS); }
-
+{ 
+  std::ifstream infile(fileName);
+  return infile.good();
 }
 
+}
