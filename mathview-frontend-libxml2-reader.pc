@@ -1,0 +1,15 @@
+# This is a comment
+prefix=/Users/kbhend/devtools
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+datarootdir=${prefix}/share
+datadir=${datarootdir}
+
+Name: MathView
+Description: MathML rendering engine (libxml2 reader frontend)
+Version: 0.8.0
+Requires: glib-2.0 libxml-2.0 mathview-core
+Libs: -L/opt/local/lib -lxml2  -L${libdir} -lmathview_frontend_libxml2_reader
+Cflags: -I/opt/local/include/libxml2  -I${includedir}/gtkmathview   -DGMV_HAVE_EXT_HASH_MAP=1
+

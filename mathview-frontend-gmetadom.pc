@@ -1,0 +1,15 @@
+# This is a comment
+prefix=/Users/kbhend/devtools
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+datarootdir=${prefix}/share
+datadir=${datarootdir}
+
+Name: MathView
+Description: MathML rendering engine (GMetaDOM frontend)
+Version: 0.8.0
+Requires: glib-2.0 gdome2-cpp-smart mathview-core
+Libs:  -L${libdir} -lmathview_frontend_gmetadom
+Cflags:  -I${includedir}/gtkmathview   -DGMV_HAVE_EXT_HASH_MAP=1
+

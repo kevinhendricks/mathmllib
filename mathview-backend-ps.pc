@@ -1,0 +1,14 @@
+# This is a comment
+prefix=/Users/kbhend/devtools
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+datarootdir=${prefix}/share
+datadir=${datarootdir}
+
+Name: GtkMathView
+Description: MathML rendering engine (PostScript backend)
+Version: 0.8.0
+Requires: glib-2.0 mathview-core
+Libs: -L${libdir} -lmathview_backend_ps
+Cflags: -I${includedir}/gtkmathview   -DGMV_HAVE_EXT_HASH_MAP=1

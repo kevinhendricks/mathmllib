@@ -1,0 +1,2 @@
+#define PKGDATADIR "/Users/kbhend/devtools/share/gtkmathview"
+#define PKGSYSCONFDIR "/Users/kbhend/devtools/etc/gtkmathview"
