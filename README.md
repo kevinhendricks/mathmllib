@@ -24,13 +24,18 @@ All of these dependencies will be removed eventually and replaced with a single
 library that interfaces to a Gumbo node tree after parsing html5
 
 What is present now in this repo is buildable (as tested on Mac OS X 10.10.2).
-A recent C++ compiler is needed, as is autmake, autoconf, libtool for the build.
+
+A recent C++ compiler is needed, as is automake, autoconf, libtool for the build.
 
 Currently the build process is:
 
 ./autogen.sh
+
 ./configure --disable-libxml2-reader --disable-custom-reader  --enable-libxml2
+
 make
+
+make install
 
 The commandline version of mathmlsvg should build inside the mathmlsvg directory
 
