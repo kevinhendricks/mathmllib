@@ -27,9 +27,6 @@
 #include "Builder.hh"
 #include "MathMLNamespaceContext.hh"
 #include "MathMLOperatorDictionary.hh"
-#if GMV_ENABLE_BOXML
-#include "BoxMLNamespaceContext.hh"
-#endif // GMV_ENABLE_BOXML
 #include "AreaId.hh"
 #include "AbstractLogger.hh"
 #include "FormattingContext.hh"
@@ -104,9 +101,6 @@ View::setBuilder(const SmartPtr<Builder>& b)
   if (builder)
     {
       builder->setMathMLNamespaceContext(mathmlContext);
-#if GMV_ENABLE_BOXML
-      builder->setBoxMLNamespaceContext(boxmlContext);
-#endif // GMV_ENABLE_BOXML
       builder->setLogger(logger);
     }
 }
@@ -124,12 +118,7 @@ View::formatElement(const SmartPtr<Element>& elem) const
     {
       const SmartPtr<MathGraphicDevice> mgd = mathmlContext ? mathmlContext->getGraphicDevice() : 0;
       assert(mgd != 0);
-#if GMV_ENABLE_BOXML
-      const SmartPtr<BoxGraphicDevice> bgd = boxmlContext ? boxmlContext->getGraphicDevice() : 0;
-      FormattingContext ctxt(mgd, bgd);
-#else
       FormattingContext ctxt(mgd);
-#endif // GMV_ENABLE_BOXML
       Length defaultSize(getDefaultFontSize(), Length::PT_UNIT);
       scaled l = mgd->evaluate(ctxt, defaultSize, scaled::zero());
       ctxt.setSize(l);
@@ -346,18 +335,6 @@ SmartPtr<MathMLNamespaceContext>
 View::getMathMLNamespaceContext(void) const
 { return mathmlContext; }
 
-#if GMV_ENABLE_BOXML
-void
-View::setBoxMLNamespaceContext(const SmartPtr<BoxMLNamespaceContext>& ctxt)
-{
-  boxmlContext = ctxt;
-  if (builder) builder->setBoxMLNamespaceContext(boxmlContext);
-}
-
-SmartPtr<BoxMLNamespaceContext>
-View::getBoxMLNamespaceContext(void) const
-{ return boxmlContext; }
-#endif // GMV_ENABLE_BOXML
 
 void
 View::render(RenderingContext& ctxt, const scaled& x, const scaled& y) const

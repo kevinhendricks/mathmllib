@@ -136,7 +136,7 @@ xtfms: $(XTFMS)
 
 endif
 
-INCLUDES = \
-  -I$(top_builddir)/auto \
+CPPFLAGS = \
+  -I$(top_srcdir)/auto \
   -I$(top_srcdir)/src/common \
   $(NULL)

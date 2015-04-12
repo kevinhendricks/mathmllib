@@ -25,11 +25,7 @@
 #include "SVG_Backend.hh"
 #include "SVG_AreaFactory.hh"
 #include "SVG_MathGraphicDevice.hh"
-#if GMV_ENABLE_BOXML
-#include "SVG_BoxGraphicDevice.hh"
-#else
 #include "BoxGraphicDevice.hh"
-#endif // GMV_ENABLE_BOXML
 #include "SpaceShaper.hh"
 #include "NullShaper.hh"
 #ifdef GMV_ENABLE_TFM
@@ -98,11 +94,6 @@ SVG_Backend::SVG_Backend(const SmartPtr<AbstractLogger>& l, const SmartPtr<Confi
 #endif // GMV_ENABLE_TFM
   mgd->setFactory(factory);
   setMathGraphicDevice(mgd);
-#if GMV_ENABLE_BOXML
-  SmartPtr<BoxGraphicDevice> bgd = SVG_BoxGraphicDevice::create(l, conf);
-  bgd->setFactory(factory);
-  setBoxGraphicDevice(bgd);
-#endif // GMV_ENABLE_BOXML
 
   for (std::multimap<int, SmartPtr<Shaper> >::const_iterator p = shaperSet.begin();
        p != shaperSet.end();

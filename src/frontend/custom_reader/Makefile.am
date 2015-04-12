@@ -22,14 +22,11 @@ noinst_HEADERS = \
   custom_reader_Builder.hh \
   $(NULL)
 
-INCLUDES = \
-  -I$(top_builddir)/auto \
+CPPFLAGS = \
   -I$(top_srcdir)/auto \
   -I$(top_srcdir)/src/common \
   -I$(top_srcdir)/src/engine/common \
   -I$(top_srcdir)/src/engine/mathml \
-  -I$(top_srcdir)/src/engine/boxml \
-  -I$(top_srcdir)/src/engine/adapters \
   -I$(top_srcdir)/src/frontend/common \
   -I$(top_srcdir)/src/backend/common \
   $(NULL)

@@ -37,13 +37,12 @@ noinst_HEADERS = \
   LinearContainerTemplate.hh \
   $(NULL)
 
-INCLUDES = \
-  -I$(top_builddir)/auto \
+CPPFLAGS = \
+  -I$(top_srcdir)/auto \
   -I$(top_srcdir)/src/common \
   -I$(top_srcdir)/src/common/mathvariants \
   -I$(top_srcdir)/src/engine/common \
   -I$(top_srcdir)/src/engine/mathml \
-  -I$(top_srcdir)/src/engine/boxml \
   -I$(top_srcdir)/src/frontend/common \
   -I$(top_srcdir)/src/backend/common \
   $(NULL)

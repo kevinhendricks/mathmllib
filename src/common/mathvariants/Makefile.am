@@ -39,8 +39,8 @@ mathview_HEADERS = \
   MathVariantMap.hh \
   $(NULL)
 
-INCLUDES = \
-  -I$(top_builddir)/auto \
+CPPFLAGS = \
+  -I$(top_srcdir)/auto \
   -I$(top_srcdir)/src/common
 
 if COND_XSLTPROC

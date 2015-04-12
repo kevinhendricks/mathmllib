@@ -1,28 +1,7 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
-
-/* Copyright (C) 2000-2007, Luca Padovani <padovani@sti.uniurb.it>.
- *
- * This file is part of GtkMathView, a flexible, high-quality rendering
- * engine for MathML documents.
- * 
- * GtkMathView is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published
- * by the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- * 
- * GtkMathView is distributed in the hope that it will be useful, but
- * WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- * Lesser General Public License for more details.
- * 
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
-#ifndef config_h
-#define config_h
-
+/* Define if building universal (internal helper macro) */
+#undef AC_APPLE_UNIVERSAL_BUILD
 
 /* Define to 1 if you want to enable linebreaking using mspace elements */
 #undef ENABLE_BREAKS
@@ -34,18 +13,11 @@
 /* Define to 1 if you want to enable validity checks while running */
 #undef ENABLE_DEBUG
 
-/* Define to 1 to let the widget collect some information for profiling
-   purposes */
-#undef ENABLE_PROFILE
-
 /* Define to 1 if you want to enable the PostScript backend */
 #undef ENABLE_PS
 
 /* Define to 1 if you want to enable the SVG backend */
 #undef ENABLE_SVG
-
-/* Define to 1 if you want support for BoxML markup */
-#undef GMV_ENABLE_BOXML
 
 /* Define if <ext/hash_map> is provided */
 #undef GMV_HAVE_EXT_HASH_MAP
@@ -62,29 +34,17 @@
 /* Define to 1 if you have the <ext/hash_map> header file. */
 #undef HAVE_EXT_HASH_MAP
 
-/* Define to 1 if gmetadom is installed */
-#undef HAVE_GMETADOM
-
-/* Define to 1 if GTK+ is installed */
-#undef HAVE_GTK
-
 /* Define to 1 if you have the <hash_map> header file. */
 #undef HAVE_HASH_MAP
 
 /* Define to 1 if you have the <inttypes.h> header file. */
 #undef HAVE_INTTYPES_H
 
-/* Define to 1 to compile with t1lib for Type 1 fonts */
-#undef HAVE_LIBT1
-
 /* Define to 1 if libxml2 is installed */
 #undef HAVE_LIBXML
 
 /* Define to 1 if you have the <memory.h> header file. */
 #undef HAVE_MEMORY_H
-
-/* Define to 1 if Pango is installed */
-#undef HAVE_PANGO
 
 /* Define to 1 if popt.h is available */
 #undef HAVE_POPT_H
@@ -107,11 +67,11 @@
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
 
-/* Define to 1 if you have the <t1lib.h> header file. */
-#undef HAVE_T1LIB_H
-
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
+
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
+#undef LT_OBJDIR
 
 /* Name of package */
 #undef PACKAGE
@@ -127,6 +87,9 @@
 
 /* Define to the one symbol short name of this package. */
 #undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
 
 /* Define to the version of this package. */
 #undef PACKAGE_VERSION
@@ -158,9 +121,17 @@
 /* Version number of package */
 #undef VERSION
 
-/* Define to 1 if your processor stores words with the most significant byte
-   first (like Motorola and SPARC, unlike Intel and VAX). */
-#undef WORDS_BIGENDIAN
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#  undef WORDS_BIGENDIAN
+# endif
+#endif
 
 /* Define to 1 if type `char' is unsigned and you are not using gcc.  */
 #ifndef __CHAR_UNSIGNED__
@@ -169,9 +140,3 @@
 
 /* Define to empty if `const' does not conform to ANSI C. */
 #undef const
-
-
-#define GMV_ENABLE_TFM (GMV_TFM_LEVEL != 0)
-
-#endif /* config_h */
-

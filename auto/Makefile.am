@@ -2,19 +2,12 @@
 NULL =
 
 noinst_PROGRAMS =
-if COND_GMETADOM
-noinst_PROGRAMS += dumpEntitiesTable
 
-entitiesTable.inc: $(CONFIGDIR)/entities-table.xml dumpEntitiesTable
-	./dumpEntitiesTable $< >$@
-
-else
 entitiesTable.inc:
 	cp $(top_srcdir)/auto/entitiesTable.inc_ entitiesTable.inc
-endif
 
-dumpEntitiesTable_SOURCES = dumpEntitiesTable.cc
-dumpEntitiesTable_LDADD = @DOM_LIBS@
+# dumpEntitiesTable_SOURCES = dumpEntitiesTable.cc
+# dumpEntitiesTable_LDADD = @DOM_LIBS@
 
 AUTOFILES = \
   token.dec \
@@ -80,9 +73,7 @@ Char.hh: $(top_builddir)/auto/Char.hh.in
 	fi \
 	)
 
-INCLUDES = \
+CPPFLAGS = \
   -I$(top_srcdir)/src/common \
-  -I$(top_srcdir)/src/frontend/gmetadom \
   -I$(top_builddir) \
-  $(DOM_CFLAGS) \
   $(NULL)

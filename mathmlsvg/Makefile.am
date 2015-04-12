@@ -27,13 +27,11 @@ mathmlsvg_SOURCES = \
 
 mathmlsvg_LDADD = \
   $(POPT_LIBS) \
-  $(GLIB_LIBS) \
   $(top_builddir)/src/backend/svg/libmathview_backend_svg.la \
   $(top_builddir)/src/view/libmathview_frontend_libxml2.la \
   $(NULL)
 
-INCLUDES = \
-  -I$(top_builddir)/auto \
+CPPFLAGS = \
   -I$(top_srcdir)/auto \
   -I$(top_srcdir)/src/common \
   -I$(top_srcdir)/src/common/mathvariants \
@@ -41,12 +39,10 @@ INCLUDES = \
   -I$(top_srcdir)/src/frontend/libxml2 \
   -I$(top_srcdir)/src/engine/common \
   -I$(top_srcdir)/src/engine/mathml \
-  -I$(top_srcdir)/src/engine/boxml \
   -I$(top_srcdir)/src/backend/common \
   -I$(top_srcdir)/src/backend/svg \
   -I$(top_srcdir)/src/view \
   $(POPT_CFLAGS) \
-  $(GLIB_CFLAGS) \
   $(XML_CFLAGS) \
   $(NULL)
 

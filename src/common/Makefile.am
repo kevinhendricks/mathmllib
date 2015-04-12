@@ -12,12 +12,6 @@ libcommon_la_LIBADD = \
   $(GLIB_LIBS) \
   $(NULL)
 
-# if USE_GCC_PCH
-# BUILT_SOURCES = all.hh
-# include ./$(DEPDIR)/all.Po
-# include $(top_srcdir)/gcc-pch.mk
-# libcommon_la_CPPFLAGS += -include all.hh
-# endif
 
 libcommon_la_SOURCES = \
   AbstractLogger.cc \
@@ -77,7 +71,6 @@ noinst_HEADERS = \
   CharTraits.hh \
   CharTraits.icc \
   Clock.hh \
-  GObjectPtr.hh \
   TemplateStringScanners.hh \
   TemplateStringParsers.hh \
   TokenSet.hh \
@@ -85,9 +78,7 @@ noinst_HEADERS = \
   token.hh \
   $(NULL)
 
-INCLUDES = \
-  -I$(top_builddir)/auto \
+CPPFLAGS = \
   -I$(top_srcdir)/auto \
-  $(GLIB_CFLAGS) \
   $(NULL)
 
