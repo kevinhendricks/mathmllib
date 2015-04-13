@@ -971,7 +971,7 @@ static ComputerModernShaper::PlainChar msbmMap[] =
 static ComputerModernShaper::PlainChar32 msbmMap32[] =
   {
     { 0x1D538, 0x41 },  //double A
-    { 0x1D538, 0x42 },  //double B
+    { 0x1D539, 0x42 },  //double B
     { 0x1D53B, 0x44 },  //double D
     { 0x1D53C, 0x45 },  //double E
     { 0x1D53D, 0x46 },  //double F
@@ -1559,6 +1559,13 @@ void
 ComputerModernShaper::registerShaper(const SmartPtr<ShaperManager>& sm, unsigned shaperId)
 {
   assert(sm);
+
+  // make sure there are normal variant options for lower case greek letters
+  if (family->fontEnabled(ComputerModernFamily::FN_CMMI)) {
+    for (unsigned i = 0; cmmMap[i].ch; i++) {
+      sm->registerChar(cmmMap[i].ch, GlyphSpec(shaperId, makeFontId(ComputerModernFamily::FE_CMMI, NORMAL_VARIANT), cmmMap[i].index));
+    }
+  }
 
   for (unsigned j = 0; j < sizeof(variantDesc) / sizeof(FontDesc); j++)
     for (unsigned i = 0; cmrMap[i].ch; i++)
