@@ -38,3 +38,12 @@ In no particular order:
 * Nicola Rossi
   PostScript backend and accents
 
+* Ed Catmur
+  patch for marshalling functions in new gtk
+
+* Matthew Wiebe
+   patch for non-italicized lowercase greek letters in ComputerModernShaper.cc
+
+* Vincent Untz
+  patch for gcc 4.7 support
+  patch for missing return in mathmlsvg
